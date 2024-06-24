@@ -1,4 +1,6 @@
-import CardLesson from "../components/chapters/CardLesson";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const data = [
   {
@@ -118,12 +120,29 @@ const data = [
     ],
   },
 ];
-const Home = () => {
+function Lesson() {
   return (
-    <main className="relative md:top-20 flex flex-col justify-center items-center flex-wrap">
-      <CardLesson data={data} />
-    </main>
+    <div className="bg-white md:w-4/12 md:min-w-80 w-full h-80 overflow-y-auto py-5  rounded-md m-3 pl-2 shadow-md">
+      {data.map((chapter, index) => (
+        <div key={index} className="w-11/12  ">
+          <div className="text-black text-2xl">{chapter.name}</div>
+          {chapter.data.map((lesson) => (
+            <div
+              key={lesson.id}
+              className="card  rounded-md w-full bg-red-200 cursor-pointer "
+            >
+              <Link
+                href="/"
+                className="name capitalize mb-2 border-b-2 w-full block border-black px-2 py-1 hover:px-4 hover:text-slate-400 duration-300"
+              >
+                {lesson.title}
+              </Link>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
   );
-};
+}
 
-export default Home;
+export default Lesson;
