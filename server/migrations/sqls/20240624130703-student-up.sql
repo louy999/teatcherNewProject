@@ -1,0 +1,11 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE student (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    username VARCHAR(200) NOT NULL,
+    imgprofile VARCHAR(500),
+    stage VARCHAR(500) NOT NULL,
+    phone VARCHAR(200) UNIQUE NOT NULL,
+    access BOOLEAN NOT NULL,
+    password VARCHAR(500) NOT NULL
+);
