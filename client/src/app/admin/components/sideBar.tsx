@@ -11,8 +11,8 @@ const SideBar = () => {
 	const payload = JSON.parse(headers().get('X-Decoded-Token'))?.payload
 
 	return (
-		<div className='w-20 md:w-48	h-screen flex items-center'>
-			<div className='w-fit h-fit fixed bg-white py-4 px-2 rounded-md shadow-md'>
+		<div className='w-20 md:w-48 h-[calc(100vh-5rem)] flex items-center'>
+			<div className='w-fit h-fit fixed bg-primary100 py-4 px-2 rounded-md shadow-md'>
 				<div className='info  items-center gap-2 mb-8 hidden md:flex'>
 					<Image
 						className='w-10 h-10 rounded-full'
