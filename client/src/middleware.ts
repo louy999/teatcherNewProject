@@ -108,6 +108,10 @@ export function middleware(request: NextRequest) {
 	} else if (url.startsWith('/logout')) {
 		return logoutRequest(request)
 	} else if (url.startsWith('/admin')) {
+		// Redirect /admin to /admin/student
+		if (url === '/admin') {
+			return NextResponse.redirect(new URL('/admin/student', request.url))
+		}
 		return handleAdminAccess(request)
 	} else if (request.nextUrl.pathname.startsWith('/lesson/')) {
 		return LessonRequest(request)

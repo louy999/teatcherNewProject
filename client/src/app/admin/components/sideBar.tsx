@@ -11,7 +11,7 @@ const SideBar = () => {
 	const payload = JSON.parse(headers().get('X-Decoded-Token'))?.payload
 
 	return (
-		<div className='w-20 md:w-48 h-[calc(100vh-5rem)] flex items-center'>
+		<div className='w-16 md:w-48 h-[calc(100vh-5rem)] flex items-center'>
 			<div className='w-fit h-fit fixed bg-primary100 py-4 px-2 rounded-md shadow-md'>
 				<div className='info  items-center gap-2 mb-8 hidden md:flex'>
 					<Image
@@ -35,12 +35,12 @@ const SideBar = () => {
 					color='green-400'
 					logo={<GrChapterAdd className='text-2xl' />}
 				/>
-				<LinkSideBar
+				{/* <LinkSideBar
 					url={'comment'}
 					span='Comments'
 					color='red-400'
 					logo={<FaComment className='text-2xl' />}
-				/>
+				/> */}
 			</div>
 		</div>
 	)

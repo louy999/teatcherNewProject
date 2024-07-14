@@ -24,7 +24,7 @@ const LessonAdmin = () => {
 			<div>
 				<div className='header flex items-center justify-between p-1 border-b-2 border-black'>
 					<div>Chapter&Lesson</div>
-					<AddLessonButton />
+					<AddLessonButton dataName={data} />
 				</div>
 				<div className='body'>
 					<ChapterComponent data={data} />

@@ -79,16 +79,19 @@ routes.patch('/:id', async (req: Request, res: Response, next) => {
 })
 
 // Delete chapter
-routes.delete('/:id/:name', async (req: Request, res: Response, next) => {
-	try {
-		const chapter: any = await chapterModel.deleteChapter(
-			req.params.id as unknown as string,
-			req.params.name as unknown as string
-		)
-		jwtAccessStudent(req, res, chapter, 'Chapter deleted successfully')
-	} catch (err) {
-		next(err)
+routes.delete(
+	'/:chapter_id/:name',
+	async (req: Request, res: Response, next) => {
+		try {
+			const chapter: any = await chapterModel.deleteChapter(
+				req.params.chapter_id as unknown as string,
+				req.params.name as unknown as string
+			)
+			jwtAccessStudent(req, res, chapter, 'Chapter deleted successfully')
+		} catch (err) {
+			next(err)
+		}
 	}
-})
+)
 
 export default routes

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {GrView} from 'react-icons/gr'
 import {useEffect, useState} from 'react'
+import CommentsComponent from './commentsComponent'
 
 const LessonComponent = ({dataId}) => {
 	const [dataFetch, setDataFetch] = useState([])
@@ -15,7 +16,6 @@ const LessonComponent = ({dataId}) => {
 		}
 		dataLessonFetch()
 	}, [dataId])
-	console.log(dataFetch)
 
 	return (
 		<>
@@ -27,6 +27,7 @@ const LessonComponent = ({dataId}) => {
 					<div className='flex gap-2 items-center'>
 						<GrView />
 						{l.view}
+						<CommentsComponent id={l.id} />
 					</div>
 				</div>
 			))}

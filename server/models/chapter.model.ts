@@ -82,16 +82,17 @@ export default class ChapterModel {
 		}
 	}
 	//delete chapter
-	async deleteChapter(chapter: string, name: string): Promise<Chapter> {
+	async deleteChapter(chapter_id: string, name: string): Promise<Chapter> {
 		try {
 			const connect = await db.connect()
-			const deleteLesson = `DELETE from lesson WHERE chapter=($1) RETURNING *`
-			const result = await connect.query(deleteLesson, [chapter])
+			const deleteLesson = `DELETE from lesson WHERE chapter_id=($1) RETURNING *`
+			const result = await connect.query(deleteLesson, [chapter_id])
 			const sql = `DELETE from chapter WHERE name=($1) RETURNING *`
 			const res = await connect.query(sql, [name])
 			connect.release()
 			//return created user
-			return result.rows[0]
+
+			return res.rows[0]
 		} catch (error) {
 			throw new Error(`${error}`)
 		}

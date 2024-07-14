@@ -9,6 +9,7 @@ const LoginForm = () => {
 	const router = useRouter()
 	const [phone, setPhone] = useState('')
 	const [password, setPassword] = useState('')
+	const [studentPa, setStudentPa] = useState('student')
 	const [err, setErr] = useState('')
 	const [loading, setLoading] = useState(false)
 	const handelSubmit = async (e) => {
@@ -53,6 +54,26 @@ const LoginForm = () => {
 	return (
 		<form className='bg-bg300 rounded-md py-5 px-2 md:w-2/4 w-11/12 flex flex-wrap gap-5 justify-center'>
 			<div className='w-full text-center text-white text-2xl'>Login</div>
+			<div className='student flex gap-4'>
+				<span
+					onClick={() => {
+						setStudentPa('student')
+					}}
+					className={`bg-textO rounded-md cursor-pointer p-2 ${
+						studentPa === 'student' ? 'opacity-100' : 'opacity-50'
+					}`}>
+					student
+				</span>
+				<span
+					onClick={() => {
+						setStudentPa('parent')
+					}}
+					className={`bg-textO rounded-md cursor-pointer p-2 ${
+						studentPa === 'parent' ? 'opacity-100' : 'opacity-50'
+					}`}>
+					parent
+				</span>
+			</div>
 			<input
 				type='text'
 				className='w-full bg-slate-100 rounded-md  py-2 px-1'
