@@ -12,10 +12,11 @@ interface ExamPageProps {
 	}
 }
 
-const ExamPage: React.FC<ExamPageProps> = ({lessonId}) => {
+const ExamPage: React.FC<ExamPageProps> = (props) => {
+
 	return (
 		<>
-			<QuizPage lessonId={lessonId} />
+			<QuizPage lessonId={props} />
 		</>
 	)
 }

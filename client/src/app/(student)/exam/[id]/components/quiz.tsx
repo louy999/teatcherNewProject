@@ -6,7 +6,6 @@ import BodyQuiz from './bodyQuiz'
 import FooterQuiz from './footerQuiz'
 import Link from 'next/link'
 import {ParsedUrlQuery} from 'querystring'
-import {NextRouter, useRouter} from 'next/router'
 
 interface LessonIdParams extends ParsedUrlQuery {
 	id: string
@@ -24,8 +23,6 @@ interface QuizPageProps {
 const QuizPage: React.FC<QuizPageProps> = ({lessonId}) => {
 	const [examData, setExamData] = useState<any[]>([]) // Replace `any[]` with the actual type of `examData`
 	const [page, setPage] = useState<number>(0)
-
-	const router: NextRouter = useRouter()
 
 	useEffect(() => {
 		const fetchExamData = async () => {
@@ -59,7 +56,7 @@ const QuizPage: React.FC<QuizPageProps> = ({lessonId}) => {
 
 	return (
 		<main className='flex justify-center items-center w-full h-screen'>
-			<div className='w-11/12 md:w-8/12 lg:w-6/12 h-fit bg-white rounded-lg'>
+			<div className='w-11/12 md:w-8/12 lg:w-6/12 h-fit bg-bg200 rounded-lg shadow-md'>
 				<>
 					<HeaderQuiz
 						exam={examData}

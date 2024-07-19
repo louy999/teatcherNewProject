@@ -21,7 +21,7 @@ const HeaderQuiz: React.FC<HeaderQuizProps> = ({exam, page}) => {
 
 	return (
 		<div className=''>
-			<ol className='flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-t-lg shadow-md sm:text-base sm:p-4 sm:space-x-4 rtl:space-x-reverse'>
+			<ol className='flex items-center justify-center w-full p-3 space-x-2 mb-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-t-lg shadow-md sm:text-base sm:p-4 sm:space-x-4 rtl:space-x-reverse'>
 				{dataExam.map((d, i) => (
 					<li
 						className={`flex items-center ${

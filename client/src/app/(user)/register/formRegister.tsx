@@ -16,6 +16,8 @@ const RegisterForm = () => {
 	const [imgprofile, setImgprofile] = useState('')
 	const [access, setAccess] = useState('')
 	const [err, setErr] = useState('')
+	const [studentPa, setStudentPa] = useState('student')
+
 	const [loading, setLoading] = useState(false)
 	const handelSubmit = async (e) => {
 		e.preventDefault()
@@ -65,8 +67,28 @@ const RegisterForm = () => {
 		if (getCookie('accesstoken') !== undefined) router.replace('/')
 	}, [router])
 	return (
-		<form className='bg-slate-500 rounded-md py-5 px-2 flex flex-wrap gap-5 justify-center md:w-8/12 lg:w-1/4 w-11/12'>
+		<form className='bg-bg300 rounded-md py-5 px-2 flex flex-wrap gap-5 justify-center md:w-8/12 lg:w-1/4 w-11/12'>
 			<div className='w-full text-center text-white text-2xl'>Create Account</div>
+			<div className='student flex gap-4'>
+				<span
+					onClick={() => {
+						setStudentPa('student')
+					}}
+					className={`bg-textO rounded-md cursor-pointer p-2 ${
+						studentPa === 'student' ? 'opacity-100' : 'opacity-50'
+					}`}>
+					student
+				</span>
+				<span
+					onClick={() => {
+						setStudentPa('parent')
+					}}
+					className={`bg-textO rounded-md cursor-pointer p-2 ${
+						studentPa === 'parent' ? 'opacity-100' : 'opacity-50'
+					}`}>
+					parent
+				</span>
+			</div>
 			<input
 				type='text'
 				className='w-full bg-slate-100 rounded-md py-2 px-1'

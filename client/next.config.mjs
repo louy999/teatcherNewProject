@@ -6,7 +6,7 @@ const nextConfig = {
     img: "http://localhost:5000",
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "images.unsplash.com"],
   },
 };
 

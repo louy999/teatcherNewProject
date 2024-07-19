@@ -7,6 +7,5 @@ CREATE TABLE lesson(
     price VARCHAR(250),
     video VARCHAR(500),
     file text [],
-    chapter_id UUID REFERENCES chapter(id),
-    view VARCHAR(200)
+    chapter_id UUID REFERENCES chapter(id)
 );

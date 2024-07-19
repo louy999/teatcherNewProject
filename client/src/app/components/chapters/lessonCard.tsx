@@ -3,6 +3,7 @@ import {GrView} from 'react-icons/gr'
 import Link from 'next/link'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import ViewsLength from './viewsLength'
 interface DataLessonCardProps {
 	data: string
 }
@@ -20,6 +21,7 @@ const LessonCard: React.FC<DataLessonCardProps> = ({data}) => {
 				})
 			}
 		}
+
 		lessonDataRes()
 	}, [data])
 
@@ -59,7 +61,9 @@ const LessonCard: React.FC<DataLessonCardProps> = ({data}) => {
 					<div className='info relative'>
 						<span className='absolute right-0 bg-primary300 text-back rounded-md w-fit px-1 h-10 opacity-70 flex justify-center items-center gap-1'>
 							<GrView />
-							<span>{lesson.view}</span>
+							<span>
+								<ViewsLength lessonId={lesson.id} />
+							</span>
 						</span>
 						<div className='name text-2xl capitalize'>Lesson: {lesson.name}</div>
 						<div className='price text-md bg-accent200 text-back rounded-md w-fit px-2 py-1 opacity-70'>

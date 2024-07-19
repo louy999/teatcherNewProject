@@ -7,7 +7,6 @@ type Student = {
 	video: string
 	file: string
 	chapter_id: string
-	view: string
 }
 
 export default Student

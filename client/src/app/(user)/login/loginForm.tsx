@@ -74,6 +74,7 @@ const LoginForm = () => {
 					parent
 				</span>
 			</div>
+
 			<input
 				type='text'
 				className='w-full bg-slate-100 rounded-md  py-2 px-1'

@@ -14,16 +14,17 @@ const LessonId: React.FC<lessonIdProps> = async ({params}) => {
 	const payload = JSON.parse(headers().get('X-Decoded-Token')).payload
 
 	const res = await axios.get(`${process.env.local}/lesson/${params.id}`)
-	const view = axios.patch(`${process.env.local}/lesson/view`, {
-		id: params.id,
-		name: res.data.data.name,
-		img: res.data.data.img,
-		price: res.data.data.price,
-		video: res.data.data.video,
-		file: res.data.data.file,
-		chapter_id: res.data.data.chapter_id,
-		view: ++res.data.data.view,
-	})
+	const ifView = await axios.get(
+		`${process.env.local}/views/student/${payload.id}`
+	)
+
+	if (ifView?.data?.data?.lesson_id !== params.id) {
+		const view = axios.post(`${process.env.local}/views`, {
+			student_id: payload.id,
+			lesson_id: params.id,
+		})
+	}
+
 	return (
 		<section className='w-full flex justify-center  gap-2 md:gap-5  items-center flex-wrap'>
 			<VideoSection url={res.data.data} />

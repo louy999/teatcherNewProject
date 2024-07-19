@@ -6,6 +6,7 @@ import examRoutes from './api/exam.routes'
 import commentRoutes from './api/comment.routes'
 import replayRoutes from './api/replay.routes'
 import parentRoutes from './api/parent.routes'
+import viewsRoutes from './api/views.routes'
 
 const routes = Router()
 routes.use('/student', studentRoutes)
@@ -15,5 +16,6 @@ routes.use('/exam', examRoutes)
 routes.use('/comment', commentRoutes)
 routes.use('/replay', replayRoutes)
 routes.use('/parent', parentRoutes)
+routes.use('/views', viewsRoutes)
 
 export default routes

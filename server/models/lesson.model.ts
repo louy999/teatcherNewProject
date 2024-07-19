@@ -7,7 +7,7 @@ export default class LessonModel {
 	async createLesson(u: Lesson): Promise<Lesson> {
 		try {
 			const connect = await db.connect()
-			const sql = `INSERT INTO lesson (name, img, price, video, file, chapter_id, view) values ($1, $2, $3, $4, $5, $6, $7) returning *`
+			const sql = `INSERT INTO lesson (name, img, price, video, file, chapter_id) values ($1, $2, $3, $4, $5, $6) returning *`
 			const res = await connect.query(sql, [
 				u.name,
 				u.img === '' ? 'images.png' : u.img,
@@ -15,7 +15,6 @@ export default class LessonModel {
 				u.video,
 				u.file,
 				u.chapter_id,
-				u.view === '' ? 0 : u.view,
 			])
 			connect.release()
 			return res.rows[0]
@@ -79,7 +78,7 @@ export default class LessonModel {
 			//open connect with DB
 			const connect = await db.connect()
 			const sql =
-				'UPDATE lesson SET name=$1, img=$2, price=$3, video=$4, file=$5, chapter_id=$6, view=$7 WHERE id=($8) RETURNING *'
+				'UPDATE lesson SET name=$1, img=$2, price=$3, video=$4, file=$5, chapter_id=$6 WHERE id=($7) RETURNING *'
 			//run query
 			const result = await connect.query(sql, [
 				u.name,
@@ -88,7 +87,7 @@ export default class LessonModel {
 				u.video,
 				u.file,
 				u.chapter_id,
-				u.view,
+
 				u.id,
 			])
 			//release connect

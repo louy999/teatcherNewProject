@@ -35,7 +35,7 @@ const BodyQuiz: React.FC<BodyQuizProps> = ({
 	}, [exam])
 
 	return (
-		<div className='bg-white h-fit w-full rounded-lg'>
+		<div className='bg-white h-fit w-full rounded-lg flex justify-center flex-wrap '>
 			<VideoExam data={examData} />
 			<div className='flex flex-wrap md:flex-nowrap gap-2 p-2 h-fit w-full min-w-2/4'>
 				<ImageExam

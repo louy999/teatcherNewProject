@@ -45,7 +45,7 @@ const AddLessonButton = ({dataName}) => {
 									<select
 										id='countries'
 										class='block w-full flex-1 p-2 outline-none'>
-										<option selected>Choose a country</option>
+										<option selected>Choose a chapter</option>
 										{dataName.map((n, a) => (
 											<option
 												value={n.id}
