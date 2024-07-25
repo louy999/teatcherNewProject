@@ -1,9 +1,10 @@
 type Parent = {
 	id?: string
 	date?: string
-	parent_name: string
-	parent_number: number
+	username: string
+	phone: number
 	password: string
 	student_id: string
+	imgprofile: string
 }
 export default Parent

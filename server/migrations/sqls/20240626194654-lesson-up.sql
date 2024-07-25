@@ -2,7 +2,7 @@
 CREATE TABLE lesson(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    name VARCHAR(500),
+    name VARCHAR(500) NOT NULL,
     img VARCHAR(500),
     price VARCHAR(250),
     video VARCHAR(500),

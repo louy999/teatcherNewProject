@@ -7,29 +7,25 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      back: "#ffffff",
-      textO: "#9C9C9C",
-      textT: "#49c5b6",
-      black: "#000",
-      primary100: "#B3E5FC",
-      primary200: "#95c7dd",
-      primary300: "#528398",
-      accent100: "#4DB6AC",
-      accent200: "#005851",
-      text100: "#37474F",
-      text200: "#62727b",
-      bg100: "#FFFFFF",
-      bg200: "#f5f5f5",
-      bg300: "#cccccc",
-    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-
+      colors: {
+        primary100: "#d4eaf7",
+        primary200: "#b6ccd8",
+        primary300: "#3b3c3d",
+        accent100: "#71c4ef",
+        accent200: "#00668c",
+        text100: "#1d1c1c",
+        text200: "#313d44",
+        bg100: "#fffefb",
+        bg200: "#f5f4f1",
+        bg300: "#cccbc8",
+        tub: "#FF0000",
+      },
       plugins: [require("flowbite/plugin")],
     },
   },

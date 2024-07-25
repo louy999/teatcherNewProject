@@ -24,8 +24,8 @@ const ChapterCard = () => {
 				<div
 					key={index}
 					className='w-11/12 mb-5'>
-					<div className='text-white bg-text100 text-bg100 shadow-md   rounded-md w-fit px-2 py-1 text-2xl mb-1'>
-						Chapter: {chapter.name}
+					<div className='bg-accent100 text-bg200 shadow-md capitalize rounded-md w-fit px-2 py-1 text-2xl mb-1'>
+						{chapter.name}
 					</div>
 					<div className='relative flex items-center  scrollbar-hide'>
 						<div className='flex gap-5 overflow-x-auto scrollbar-hide w-full py-5 px-10  bg-opacity-70 bg-bg300 shadow-md rounded-md'>

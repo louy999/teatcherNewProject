@@ -4,16 +4,16 @@ import Image from 'next/image'
 
 const LoginPage = () => {
 	return (
-		<section className='flex justify-center items-center w-full flex-wrap h-[calc(100vh-10rem)]'>
+		<div className='flex justify-center items-center w-full flex-wrap h-[calc(100vh-4rem)] '>
 			<LoginForm />
 			<Image
-				src='/nik-z1d-LP8sjuI-unsplash.jpg'
-				className='absolute -top-16 -z-10 right-0 w-2/5 h-screen'
+				src='/wave.svg'
 				alt=''
-				width={500}
+				className='absolute w-screen bottom-0'
+				width={1000}
 				height={1000}
 			/>
-		</section>
+		</div>
 	)
 }
 

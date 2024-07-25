@@ -122,7 +122,7 @@ const data = [
 ]
 function Lesson() {
 	return (
-		<div className='bg-bg200  w-full h-80 overflow-y-auto py-5  rounded-md m-3 pl-2 shadow-md'>
+		<div className='bg-bg200  w-full h-80 overflow-y-auto py-5  rounded-md  pl-2 shadow-md'>
 			{data.map((chapter, index) => (
 				<div
 					key={index}

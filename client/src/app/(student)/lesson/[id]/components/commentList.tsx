@@ -42,7 +42,7 @@ const CommentListLesson = ({url}) => {
 					key={i}>
 					<div className='flex items-center mb-2'>
 						<div className='font-medium '>
-							<p className='text-black'>
+							<p className='text-text200'>
 								{c?.username}
 								<span className='block text-sm text-gray-500 '>
 									{formatDate(c.date)}
@@ -51,7 +51,9 @@ const CommentListLesson = ({url}) => {
 						</div>
 					</div>
 
-					<p className='mb-2 text-gray-500 '>{c.description}</p>
+					<p className='mb-2 bg-primary100 text-text100 py-1 px-2 rounded-md'>
+						{c.description}
+					</p>
 					<footer className='mb-5 flex flex-wrap justify-end text-md text-gray-500 '>
 						<ReplayBox url={c} />
 					</footer>

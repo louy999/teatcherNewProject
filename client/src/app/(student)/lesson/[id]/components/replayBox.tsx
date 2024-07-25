@@ -28,26 +28,23 @@ const ReplayBox = ({url}) => {
 	return (
 		// <div className='w-full flex justify-end'>
 		<>
-			{store?.map(
-				(s, i) => (
-					<article
-						className='w-11/12 mb-5 md:6/12 p-2 md:py-4 rounded-md  bg-slate-200'
-						key={i}>
-						<div className='flex items-center mb-2'>
-							<div className='font-medium '>
-								<p className='text-black'>
-									{s.username}
-									<span className='block text-sm text-gray-500'>
-										{formatDate(s.date)}
-									</span>
-								</p>
-							</div>
+			{store?.map((s, i) => (
+				<article
+					className='w-11/12 mb-5 md:6/12 p-2 md:py-4 rounded-md  bg-slate-200'
+					key={i}>
+					<div className='flex items-center mb-2'>
+						<div className='font-medium '>
+							<p className='text-black'>
+								{s.username}
+								<span className='block text-sm text-gray-500'>
+									{formatDate(s.date)}
+								</span>
+							</p>
 						</div>
-						<p className='mb-2 text-gray-500 '>{s.description}</p>
-					</article>
-				)
-				// </div>
-			)}
+					</div>
+					<p className='mb-2 text-gray-500 '>{s.description}</p>
+				</article>
+			))}
 		</>
 	)
 }

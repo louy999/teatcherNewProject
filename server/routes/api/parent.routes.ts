@@ -20,12 +20,11 @@ routes.post('/', async (req: Request, res: Response, next) => {
 		next(err)
 	}
 })
-
 //get all parent
 routes.get('/', async (req: Request, res: Response, next) => {
 	try {
-		const students = await parentModel.getAllParents()
-		jwtAccessToken(req, res, students, 'Parent retrieved successfully')
+		const parent = await parentModel.getAllParents()
+		jwtAccessToken(req, res, parent, 'get successfully')
 	} catch (err: any) {
 		next(err.message)
 	}
@@ -75,8 +74,8 @@ routes.delete('/:id', async (req: Request, res: Response, next) => {
 })
 routes.post('/auth', async (req: Request, res: Response, next) => {
 	try {
-		const {parent_number, password} = req.body
-		const parent: Parent | null = await parentModel.auth(parent_number, password)
+		const {phone, password} = req.body
+		const parent: Parent | null = await parentModel.auth(phone, password)
 
 		if (!parent) {
 			return res.status(401).json({message: 'Authentication failed'})
@@ -84,9 +83,10 @@ routes.post('/auth', async (req: Request, res: Response, next) => {
 
 		const payload = {
 			id: parent.id,
-			parent_name: parent.parent_name,
-			parent_number: parent.parent_number,
+			username: parent.username,
+			phone: parent.phone,
 			password: parent.password,
+			imgprofile: parent.imgprofile,
 			student_id: parent.student_id,
 		}
 		const token = jwt.sign({payload}, config.tokenSecret as unknown as string)

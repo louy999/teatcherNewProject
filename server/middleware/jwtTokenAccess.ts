@@ -35,8 +35,9 @@ export const jwtAccessToken = (
 	}
 
 	const access: string = token.payload.access
+	const parent: string = token.payload.student_id
 
-	if (access) {
+	if (access || parent) {
 		return res.json({
 			status: 'success',
 			data: student,
@@ -76,8 +77,9 @@ export const jwtAccessStudent = (
 
 	const payload: string = token.payload.id
 	const access: string = token.payload.access
+	const parent: string = token.payload.student_id
 
-	if (payload === req.params.id || access) {
+	if (payload === req.params.id || access || parent) {
 		res.json({
 			status: 'success',
 			data: student,

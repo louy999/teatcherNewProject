@@ -6,7 +6,7 @@ const LivePage = () => {
 		<Link
 			href='/'
 			className='cursor-pointer'>
-			<RiLiveFill className='w-8 h-8 hover:bg-textO text-text200 hover:px-2 rounded-lg duration-300' />
+			<RiLiveFill className='w-8 h-8  text-tub hover:px-2 rounded-lg duration-300' />
 		</Link>
 	)
 }

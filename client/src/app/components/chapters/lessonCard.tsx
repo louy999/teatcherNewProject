@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import {GrView} from 'react-icons/gr'
 import Link from 'next/link'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
@@ -59,17 +58,13 @@ const LessonCard: React.FC<DataLessonCardProps> = ({data}) => {
 						/>
 					</div>
 					<div className='info relative'>
-						<span className='absolute right-0 bg-primary300 text-back rounded-md w-fit px-1 h-10 opacity-70 flex justify-center items-center gap-1'>
-							<GrView />
-							<span>
-								<ViewsLength lessonId={lesson.id} />
-							</span>
-						</span>
-						<div className='name text-2xl capitalize'>Lesson: {lesson.name}</div>
-						<div className='price text-md bg-accent200 text-back rounded-md w-fit px-2 py-1 opacity-70'>
+						<ViewsLength lessonId={lesson.id} />
+
+						<div className='name text-2xl capitalize'>{lesson.name}</div>
+						<div className='price text-md bg-accent100 text-bg100 rounded-md w-fit px-2 py-1 opacity-70'>
 							{formatViewCount(lesson.price)} EGP
 						</div>
-						<div className='dateCreate text-end opacity-70'>
+						<div className='dateCreate text-end text-sm text-text200 opacity-70'>
 							{formatDate(lesson.date)}
 						</div>
 					</div>

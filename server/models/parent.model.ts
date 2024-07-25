@@ -15,11 +15,12 @@ export default class ParentModel {
 			//open connect with DB
 			const connect = await db.connect()
 			const sql =
-				'INSERT INTO parent ( parent_name, parent_number, password, student_id ) values ($1, $2, $3, $4) returning id, date, parent_name, parent_number  ,student_id'
+				'INSERT INTO parent ( username, phone, imgprofile, password, student_id ) values ($1, $2, $3, $4, $5) returning id, date, username, phone ,imgprofile ,student_id'
 			//run query
 			const result = await connect.query(sql, [
-				u.parent_name,
-				u.parent_number,
+				u.username,
+				u.phone,
+				u.imgprofile === '' ? 'blank-profile-.png' : u.imgprofile,
 				hashPassword(u.password),
 				u.student_id,
 			])
@@ -37,8 +38,7 @@ export default class ParentModel {
 		try {
 			//open connect with DB
 			const connect = await db.connect()
-			const sql =
-				'SELECT id, date, parent_name, parent_number, student_id from parent'
+			const sql = 'SELECT * from parent'
 			//run query
 			const result = await connect.query(sql)
 			//release connect
@@ -55,7 +55,7 @@ export default class ParentModel {
 			//open connect with DB
 			const connect = await db.connect()
 			const sql =
-				'SELECT id, date, parent_name, parent_number, student_id from parent WHERE id=($1)'
+				'SELECT id, date, username, phone, student_id, imgprofile from parent WHERE id=($1)'
 			//run query
 			const result = await connect.query(sql, [id])
 			//release connect
@@ -67,20 +67,20 @@ export default class ParentModel {
 		}
 	}
 
-	async getOneFromPhone(parent_number: string): Promise<Parent> {
+	async getOneFromPhone(phone: string): Promise<Parent> {
 		try {
 			//open connect with DB
 			const connect = await db.connect()
 			const sql =
-				'SELECT id, date, parent_name, parent_number, student_id from parent WHERE parent_number=($1)'
+				'SELECT id, date, username, phone, student_id from parent WHERE phone=($1)'
 			//run query
-			const result = await connect.query(sql, [parent_number])
+			const result = await connect.query(sql, [phone])
 			//release connect
 			connect.release()
 			//return created parent
 			return result.rows[0]
 		} catch (err) {
-			throw new Error(`.could not find parent number : ${parent_number}, ${err}`)
+			throw new Error(`.could not find parent number : ${phone}, ${err}`)
 		}
 	}
 
@@ -89,12 +89,13 @@ export default class ParentModel {
 		try {
 			//open connect with DB
 			const connect = await db.connect()
-			const sql = `UPDATE parent SET parent_name=$1, parent_number=$2,  password=$3 WHERE id=$4 RETURNING *`
+			const sql = `UPDATE parent SET username=$1, phone=$2,  password=$3, imgprofile=$4 WHERE id=$5 RETURNING *`
 			//run query
 			const result = await connect.query(sql, [
-				u.parent_name,
-				u.parent_number,
+				u.username,
+				u.phone,
 				u.password,
+				u.imgprofile,
 				u.id,
 			])
 			//release connect
@@ -102,7 +103,7 @@ export default class ParentModel {
 			//return created parent
 			return result.rows[0]
 		} catch (err) {
-			throw new Error(`could not update  parent ${u.parent_number}, ${err}`)
+			throw new Error(`could not update  parent ${u.phone}, ${err}`)
 		}
 	}
 
@@ -123,11 +124,11 @@ export default class ParentModel {
 		}
 	}
 	//authenticate user
-	async auth(parent_number: string, password: string): Promise<Parent | null> {
+	async auth(phone: string, password: string): Promise<Parent | null> {
 		try {
 			const connect = await db.connect()
-			const sql = `SELECT password FROM parent WHERE parent_number=($1)`
-			const res = await connect.query(sql, [parent_number])
+			const sql = `SELECT password FROM parent WHERE phone=($1)`
+			const res = await connect.query(sql, [phone])
 			if (res.rows.length) {
 				const {password: hashPassword} = res.rows[0]
 				const isPassValid = bcrypt.compareSync(
@@ -136,8 +137,8 @@ export default class ParentModel {
 				)
 				if (isPassValid) {
 					const userInfo = await connect.query(
-						`SELECT parent_name, parent_number, password, student_id FROM parent WHERE parent_number=($1)`,
-						[parent_number]
+						`SELECT username, phone, password, student_id, imgprofile FROM parent WHERE phone=($1)`,
+						[phone]
 					)
 					return userInfo.rows[0]
 				} else {

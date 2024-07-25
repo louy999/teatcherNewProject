@@ -5,8 +5,7 @@ const LogoPage = () => {
 	return (
 		<Link
 			href='/'
-			className='flex justify-center items-center  text-xl gap-2'>
-			<GiTeacher className='w-10 h-10 ' />
+			className='flex justify-center items-center text-text100  text-xl gap-2'>
 			LogoPage
 		</Link>
 	)
