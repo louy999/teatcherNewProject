@@ -76,17 +76,21 @@ const LoginForm = () => {
 						parent
 					</span>
 				</div>
-
-				<input
-					type='text'
-					className='w-full bg-slate-100 rounded-md  py-2 px-1 z-30'
-					placeholder='Enter your number'
-					value={phone}
-					onChange={(e) => setPhone(e.target.value)}
-				/>
+				<div className='w-full flex items-center gap-1'>
+					<span className='bg-primary300 text-bg100 rounded-md py-2 px-1 '>+20</span>
+					<input
+						type='text'
+						className='w-full bg-slate-100 focus:bg-bg100 rounded-md py-2 px-1'
+						placeholder='Enter your number'
+						value={phone}
+						onChange={(e) => setPhone(e.target.value)}
+						pattern='[0-9]*' // Only allow numeric input
+						title='Please enter numbers only'
+					/>
+				</div>
 				<input
 					type='password'
-					className='w-full bg-slate-100 rounded-md  py-2 px-1 z-30'
+					className='w-full bg-slate-100 focus:bg-bg100  rounded-md  py-2 px-1 z-30'
 					placeholder='Enter your password'
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}

@@ -2,7 +2,7 @@ import StudentInfo from './components/StudentInfo'
 import Lesson from './components/lessons'
 import Exam from './components/exam'
 import axios from 'axios'
-import {headers} from 'next/headers'
+import {headers, cookies} from 'next/headers'
 import ParentInfo from './components/parentInfo'
 
 const ProfilePage = async () => {

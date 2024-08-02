@@ -35,7 +35,7 @@ routes.get('/:id', async (req: Request, res: Response, next) => {
 		const parent: any = await parentModel.getOneParent(
 			req.params.id as unknown as string
 		)
-		jwtAccessToken(req, res, parent, 'get successfully')
+		jwtAccessStudent(req, res, parent, 'get successfully')
 	} catch (err) {
 		next(err)
 	}
@@ -56,7 +56,22 @@ routes.get('/phone/:phone', async (req: Request, res: Response, next) => {
 routes.patch('/:id', async (req: Request, res: Response, next) => {
 	try {
 		const parent: any = await parentModel.updateParent(req.body)
-		jwtAccessStudent(req, res, parent, 'parent updated successfully')
+
+		const payload = {
+			id: parent.id,
+			username: parent.username,
+			phone: parent.phone,
+			password: parent.password,
+			imgprofile: parent.imgprofile,
+			student_id: parent.student_id,
+		}
+		const token = jwt.sign({payload}, config.tokenSecret as unknown as string)
+
+		res.json({
+			status: 'success',
+			data: {...parent, token},
+			message: 'parent update successfully',
+		})
 	} catch (err) {
 		next(err)
 	}

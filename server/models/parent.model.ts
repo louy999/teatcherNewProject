@@ -89,13 +89,14 @@ export default class ParentModel {
 		try {
 			//open connect with DB
 			const connect = await db.connect()
-			const sql = `UPDATE parent SET username=$1, phone=$2,  password=$3, imgprofile=$4 WHERE id=$5 RETURNING *`
+			const sql = `UPDATE parent SET username=$1, phone=$2,  password=$3, imgprofile=$4, student_id=$5 WHERE id=$6 RETURNING *`
 			//run query
 			const result = await connect.query(sql, [
 				u.username,
 				u.phone,
-				u.password,
+				hashPassword(u.password),
 				u.imgprofile,
+				u.student_id,
 				u.id,
 			])
 			//release connect
@@ -137,7 +138,8 @@ export default class ParentModel {
 				)
 				if (isPassValid) {
 					const userInfo = await connect.query(
-						`SELECT username, phone, password, student_id, imgprofile FROM parent WHERE phone=($1)`,
+						`SELECT id, date, username, phone, password, student_id, imgprofile FROM parent WHERE phone=($1)`,
+
 						[phone]
 					)
 					return userInfo.rows[0]

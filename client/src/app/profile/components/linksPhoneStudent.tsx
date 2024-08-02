@@ -21,7 +21,7 @@ const LinksPhoneStudent = ({id, token}) => {
 	return (
 		<div
 			className={` rounded-md py-2 px-1 ss duration-300  cursor-pointer text-sm ${
-				data.phone === searchParams.get('stu')
+				data?.phone === searchParams.get('stu')
 					? 'relative md:left-5 bg-bg200 text-accent200 '
 					: 'bg-accent100 text-text100 shadow-md'
 			} `}
