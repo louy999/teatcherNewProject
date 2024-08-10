@@ -8,6 +8,5 @@ CREATE TABLE exam(
     image VARCHAR(500),
     video VARCHAR(500),
     choices text [],
-    answer VARCHAR(200),
-    done BOOLEAN
+    answer VARCHAR(200)
 );

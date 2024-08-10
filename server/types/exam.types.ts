@@ -8,6 +8,5 @@ type Exam = {
 	video: string
 	choices: string[]
 	answer: string
-	done: boolean | string
 }
 export default Exam

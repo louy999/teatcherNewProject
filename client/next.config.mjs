@@ -5,9 +5,6 @@ const nextConfig = {
     local: "http://localhost:5000/api",
     img: "http://localhost:5000",
   },
-  images: {
-    domains: ["localhost", "images.unsplash.com"],
-  },
 };
 
 export default nextConfig;

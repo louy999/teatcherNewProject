@@ -1,11 +1,7 @@
-import ChapterCard from './components/chapters/chapterCard'
+import Image from "next/image";
 
-const Home = () => {
-	return (
-		<main className='relative flex flex-col justify-center items-center flex-wrap'>
-			<ChapterCard />
-		</main>
-	)
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+  );
 }
-
-export default Home

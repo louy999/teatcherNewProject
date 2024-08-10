@@ -1,11 +1,9 @@
 import type {Metadata} from 'next'
-import {Rubik} from 'next/font/google'
+import {Inter} from 'next/font/google'
 import './globals.css'
-import {ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import NavBar from './components/navbar/navbar'
+import NavBar from './components/nav/navbar'
 
-const rubik = Rubik({subsets: ['latin']})
+const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -19,10 +17,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${rubik.className}`}>
+			<body className={inter.className}>
 				<NavBar />
-				<ToastContainer />
-				<div className='relative top-16'>{children}</div>
+				{children}
 			</body>
 		</html>
 	)

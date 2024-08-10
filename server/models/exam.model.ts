@@ -7,7 +7,7 @@ export default class ExamModel {
 	async createExam(u: Exam): Promise<Exam> {
 		try {
 			const connect = await db.connect()
-			const sql = `INSERT INTO exam (title, lesson_id, description, image, video, choices, answer, done) values ($1, $2, $3, $4, $5, $6, $7, $8) returning *`
+			const sql = `INSERT INTO exam (title, lesson_id, description, image, video, choices, answer) values ($1, $2, $3, $4, $5, $6, $7) returning *`
 			const res = await connect.query(sql, [
 				u.title,
 				u.lesson_id,
@@ -16,7 +16,6 @@ export default class ExamModel {
 				u.video,
 				u.choices,
 				u.answer,
-				u.done === '' ? false : u.done,
 			])
 			connect.release()
 			return res.rows[0]
@@ -80,7 +79,7 @@ export default class ExamModel {
 			//open connect with DB
 			const connect = await db.connect()
 			const sql =
-				'UPDATE exam SET title=$1, lesson_id=$2, description=$3, image=$4, video=$5, choices=$6, answer=$7, done=$8 WHERE id=($9) RETURNING *'
+				'UPDATE exam SET title=$1, lesson_id=$2, description=$3, image=$4, video=$5, choices=$6, answer=$7 WHERE id=($8) RETURNING *'
 			//run query
 			const result = await connect.query(sql, [
 				u.title,
@@ -90,7 +89,6 @@ export default class ExamModel {
 				u.video,
 				u.choices,
 				u.answer,
-				u.done,
 				u.id,
 			])
 			//release connect
