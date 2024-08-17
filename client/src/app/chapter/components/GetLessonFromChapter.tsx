@@ -32,7 +32,7 @@ const GetLessonFromChapter: React.FC<chapterIdType> = async ({chapterId}) => {
 			<div className='flex justify-start items-center gap-2 overflow-x-auto py-4 px-2v '>
 				{dataLessonFromChapter.map((lesson, index) => (
 					<Link
-						href='/lesson'
+						href={`/lesson?id=${lesson.id}`}
 						key={index}
 						className='min-w-[320px] w-80 px-4 py-2 rounded-md shadow-md bg-bg300 hover:p-3 duration-300 cursor-pointer'>
 						<Image
